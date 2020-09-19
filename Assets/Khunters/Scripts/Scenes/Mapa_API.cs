@@ -71,7 +71,8 @@ public class Mapa_API : MonoBehaviour
         if (localizacao_atual.x > 1 || localizacao_atual.x < -1)
         {
             imagen_gps.SetActive(false);
-            mensagem.text = localizacao_atual.x.ToString() + " - " + localizacao_atual.y.ToString();
+            mensagem.text = "Olá Mundo!";
+            // mensagem.text = localizacao_atual.x.ToString() + " - " + localizacao_atual.y.ToString();
         }
         else
         {
@@ -99,56 +100,8 @@ public class Mapa_API : MonoBehaviour
             ListaJogadores lista_jogadores = JsonUtility.FromJson<ListaJogadores>(r_text);
             // Personagen personagen = JsonUtility.FromJson<Personagen>(r_text);
 
-            GameObject[] marcarParaApagar = GameObject.FindGameObjectsWithTag("Personagem");
-            foreach (GameObject ob in marcarParaApagar)
-            {
-                ob.tag = "Apagar";
-            }
-
-            foreach (Personagen i in lista_personagens.personagens)
-            {
-                float x = float.Parse(i.tamanho);
-                if (x >= 10)
-                {
-                    x = x / 10;
-                }
-
-                try
-                {
-                    Plotar_objeto_no_mapa(i.id.ToString(), "Animais/" + i.prefab, i.latitude + ", " + i.longitude, x);
-                }
-                catch (System.Exception)
-                {
-                    // Debug.Log("Prefab Animais/" + i.prefab + "Não encontrado");
-                }
-
-                try
-                {
-                    Plotar_objeto_no_mapa(i.id.ToString(), "Itens/" + i.prefab, i.latitude + ", " + i.longitude, x);
-                }
-                catch (System.Exception)
-                {
-                    // Debug.Log("Prefab Itens/" + i.prefab + "Não encontrado");
-                }
-
-
-            }
-
-            foreach (Jogador i in lista_jogadores.jogadores)
-            {
-                float x = 3f;
-                try
-                {
-                    GameObject instance_check = Instantiate(Resources.Load("Personagens/Prefabs/Players/" + i.avatar, typeof(GameObject))) as GameObject;
-                    Destroy(instance_check);
-                }
-                catch (System.Exception)
-                {
-                    i.avatar = "AJ";
-                }
-
-                Plotar_objeto_no_mapa("player_" + i.id, "Players/" + i.avatar, i.latitude + ", " + i.longitude, x);
-            }
+            Gerencia_personagens(lista_personagens);
+            Gerencia_jogadores(lista_jogadores);
 
             GameObject[] listaApagar = GameObject.FindGameObjectsWithTag("Apagar");
             foreach (GameObject ob in listaApagar)
@@ -159,25 +112,71 @@ public class Mapa_API : MonoBehaviour
         }
         StartCoroutine(Buscar_personagens_proximos()); //Recursão do metodo
     }
-    void Plotar_objeto_no_mapa(string name, string prefab, string coords, float tamanho) //Instancia um prefab na cena
+    void Gerencia_personagens(ListaPersonagens lista_personagens)
     {
+        GameObject[] list_Personagem = GameObject.FindGameObjectsWithTag("Personagem");
+        GameObject[] list_Item = GameObject.FindGameObjectsWithTag("Item");
+
+        foreach (GameObject ob in list_Personagem) { ob.tag = "Apagar"; }
+        foreach (GameObject ob in list_Item) { ob.tag = "Apagar"; }
+
+        foreach (Personagen i in lista_personagens.personagens)
+        {
+            float x = float.Parse(i.tamanho);
+            if (x >= 10)
+            {
+                x = x / 10;
+            }
+
+            try
+            {
+                Plotar_objeto_no_mapa(i.id.ToString(), "Personagem", "Animais/" + i.prefab, i.latitude + ", " + i.longitude, x);
+            }
+            catch (System.Exception)
+            {
+                // Debug.Log("Prefab Animais/" + i.prefab + "Não encontrado");
+            }
+
+            try
+            {
+                Plotar_objeto_no_mapa(i.prefab, "Item", "Itens/" + i.prefab, i.latitude + ", " + i.longitude, x);
+            }
+            catch (System.Exception)
+            {
+                // Debug.Log("Prefab Itens/" + i.prefab + "Não encontrado");
+            }
+        }
+
+    }
+    void Gerencia_jogadores(ListaJogadores lista_jogadores)
+    {
+        foreach (Jogador i in lista_jogadores.jogadores)
+        {
+            float x = 3f;
+            try
+            {
+                GameObject instance_check = Instantiate(Resources.Load("Personagens/Prefabs/Players/" + i.avatar, typeof(GameObject))) as GameObject;
+                Destroy(instance_check);
+            }
+            catch (System.Exception)
+            {
+                i.avatar = "AJ";
+            }
+            Plotar_objeto_no_mapa("player_" + i.id, "Personagem", "Players/" + i.avatar, i.latitude + ", " + i.longitude, x);
+        }
+    }
+    void Plotar_objeto_no_mapa(string name, string tag, string prefab, string coords, float tamanho) //Instancia um prefab na cena
+    {
+
         Vector2d localization = Conversions.StringToLatLon(s: coords);
         try
         {
             tempGameObject = GameObject.Find(name);
-            try
-            {
-                AICharacterControl myAICharacterControl = tempGameObject.gameObject.GetComponent<AICharacterControl>();
-                GameObject alvo = Instantiate(Resources.Load("Personagens/Prefabs/Itens/Alvo", typeof(GameObject))) as GameObject;
-                alvo.gameObject.tag = "Personagem";
-                alvo.transform.localPosition = _map.GeoToWorldPosition(localization, false);
-                myAICharacterControl.target = alvo.transform;
-
-            }
-            catch (System.Exception)
-            {
-                tempGameObject.transform.position = _map.GeoToWorldPosition(localization, false);
-            }
+            AICharacterControl myAICharacterControl = tempGameObject.gameObject.GetComponent<AICharacterControl>();
+            GameObject alvo = Instantiate(Resources.Load("Personagens/Prefabs/Itens/Alvo", typeof(GameObject))) as GameObject;
+            alvo.gameObject.tag = "Personagem";
+            alvo.transform.localPosition = _map.GeoToWorldPosition(localization, false);
+            myAICharacterControl.target = alvo.transform;
         }
         catch (System.Exception)
         {
@@ -186,11 +185,7 @@ public class Mapa_API : MonoBehaviour
             tempGameObject.name = name;
         }
 
-        if (tempGameObject.gameObject.tag == "Personagem")
-        {
-            tempGameObject.gameObject.tag = "Player";
-        }
-
+        tempGameObject.gameObject.tag = tag;
 
         try
         {
@@ -204,7 +199,6 @@ public class Mapa_API : MonoBehaviour
             }
             catch (System.Exception)
             {
-
                 Debug.Log("Improssivel ajustar o tamanho");
             }
 
@@ -228,7 +222,7 @@ public class Mapa_API : MonoBehaviour
             Jogador jogador = JsonUtility.FromJson<Jogador>(r_text);
 
             string avatar = jogador.avatar;
-            GameObject [] old_player = GameObject.FindGameObjectsWithTag("Player");
+            GameObject[] old_player = GameObject.FindGameObjectsWithTag("Player");
             try
             {
                 player = Instantiate(Resources.Load("Personagens/Prefabs/Players/" + avatar, typeof(GameObject))) as GameObject;
@@ -255,7 +249,7 @@ public class Mapa_API : MonoBehaviour
             {
                 Destroy(ob);
             }
-            
+
         }
 
     }
