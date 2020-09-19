@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &5674524036231337848
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422846509834982036}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.2883248, y: 0.7056198, z: 0.18808132}
+  m_Center: {x: 0.0044813557, y: -0.17567858, z: -0.007122129}
 --- !u!114 &8422846509839247281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37,7 +50,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8422846510034244178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8422846509835210420}
@@ -53,10 +66,10 @@ BoxCollider:
   m_GameObject: {fileID: 8422846510034244178}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.4172728, y: 1.0173489, z: 0.17393345}
-  m_Center: {x: 0.002489686, y: -0.26895434, z: 0.001033891}
+  m_Size: {x: 0.7569987, y: 2.0683756, z: 0.17393345}
+  m_Center: {x: -0.018743187, y: -0.5609062, z: 0.0010338873}
 --- !u!1001 &8422846509835080758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74,7 +87,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 19b0cb7bf335f224b8f683ea2139df89, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 19b0cb7bf335f224b8f683ea2139df89, type: 3}
       propertyPath: m_LocalPosition.z
@@ -114,15 +127,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 19b0cb7bf335f224b8f683ea2139df89, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 19b0cb7bf335f224b8f683ea2139df89, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 19b0cb7bf335f224b8f683ea2139df89, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.5
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19b0cb7bf335f224b8f683ea2139df89, type: 3}
