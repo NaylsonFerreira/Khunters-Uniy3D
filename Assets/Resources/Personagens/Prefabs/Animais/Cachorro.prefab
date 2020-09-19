@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2141108652560647002}
   - component: {fileID: 6986396578775995381}
   - component: {fileID: 7573836608440671342}
+  - component: {fileID: -4986227011669088641}
   m_Layer: 0
   m_Name: Cachorro
   m_TagString: Personagem
@@ -62,6 +63,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-4986227011669088641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8544588673251129941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bdf815eb198a677823fab44dd3e1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8839844743502941265
 PrefabInstance:
   m_ObjectHideFlags: 0

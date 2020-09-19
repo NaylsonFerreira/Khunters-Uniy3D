@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4361449953203689451}
   - component: {fileID: 8552008692351789624}
   - component: {fileID: 6124675939965803498}
+  - component: {fileID: 8522006361629641400}
   m_Layer: 0
   m_Name: Cobra
   m_TagString: Personagem
@@ -62,6 +63,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &8522006361629641400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4553963571888188398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bdf815eb198a677823fab44dd3e1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5430534034516657842
 PrefabInstance:
   m_ObjectHideFlags: 0
