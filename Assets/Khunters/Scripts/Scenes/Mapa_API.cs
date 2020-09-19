@@ -172,36 +172,27 @@ public class Mapa_API : MonoBehaviour
         try
         {
             tempGameObject = GameObject.Find(name);
-            AICharacterControl myAICharacterControl = tempGameObject.gameObject.GetComponent<AICharacterControl>();
-            GameObject alvo = Instantiate(Resources.Load("Personagens/Prefabs/Itens/Alvo", typeof(GameObject))) as GameObject;
-            alvo.gameObject.tag = "Personagem";
-            alvo.transform.localPosition = _map.GeoToWorldPosition(localization, false);
-            myAICharacterControl.target = alvo.transform;
+            tempGameObject.gameObject.tag = tag;
+            try
+            {
+                AICharacterControl myAICharacterControl = tempGameObject.gameObject.GetComponent<AICharacterControl>();
+                GameObject alvo = Instantiate(Resources.Load("Personagens/Prefabs/Itens/Alvo", typeof(GameObject))) as GameObject;
+                alvo.gameObject.tag = "Personagem";
+                alvo.transform.localPosition = _map.GeoToWorldPosition(localization, false);
+                myAICharacterControl.target = alvo.transform;
+            }
+            catch (System.Exception)
+            {
+                // Debug.Log()
+            }
         }
         catch (System.Exception)
         {
             tempGameObject = Instantiate(Resources.Load("Personagens/Prefabs/" + prefab, typeof(GameObject))) as GameObject;
             tempGameObject.transform.localPosition = _map.GeoToWorldPosition(localization, false);
             tempGameObject.name = name;
-        }
-
-        tempGameObject.gameObject.tag = tag;
-
-        try
-        {
-            tempGameObject.gameObject.transform.GetChild(0).GetChild(0).GetChild(0).gameObject.transform.localScale = new Vector3(tamanho, tamanho, tamanho);
-        }
-        catch (System.Exception)
-        {
-            try
-            {
-                tempGameObject.gameObject.transform.localScale = new Vector3(tamanho, tamanho, tamanho);
-            }
-            catch (System.Exception)
-            {
-                Debug.Log("Improssivel ajustar o tamanho");
-            }
-
+            tempGameObject.gameObject.tag = tag;
+            tempGameObject.gameObject.transform.localScale = new Vector3(tamanho, tamanho, tamanho);
         }
 
     }
