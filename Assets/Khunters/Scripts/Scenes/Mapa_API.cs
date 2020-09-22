@@ -33,6 +33,17 @@ public class Jogador
 }
 
 [System.Serializable]
+public class Item_mochila
+{
+    public int quantidade;
+    public string prefab;
+}
+[System.Serializable]
+public class Mochila
+{
+    public Item_mochila[] mochila;
+}
+[System.Serializable]
 public class ListaPersonagens
 {
     public Personagen[] personagens;
@@ -98,10 +109,11 @@ public class Mapa_API : MonoBehaviour
             string r_text = request.downloadHandler.text;
             ListaPersonagens lista_personagens = JsonUtility.FromJson<ListaPersonagens>(r_text);
             ListaJogadores lista_jogadores = JsonUtility.FromJson<ListaJogadores>(r_text);
-            // Personagen personagen = JsonUtility.FromJson<Personagen>(r_text);
+            Mochila mochila = JsonUtility.FromJson<Mochila>(r_text);
 
             Gerencia_personagens(lista_personagens);
             Gerencia_jogadores(lista_jogadores);
+            Gerencia_mochila(mochila);
 
             GameObject[] listaApagar = GameObject.FindGameObjectsWithTag("Apagar");
             foreach (GameObject ob in listaApagar)
@@ -127,7 +139,6 @@ public class Mapa_API : MonoBehaviour
             {
                 x = x / 10;
             }
-
             try
             {
                 Plotar_objeto_no_mapa(i.id.ToString(), "Personagem", "Animais/" + i.prefab, i.latitude + ", " + i.longitude, x);
@@ -135,15 +146,14 @@ public class Mapa_API : MonoBehaviour
             catch (System.Exception)
             {
                 // Debug.Log("Prefab Animais/" + i.prefab + "Não encontrado");
-            }
-
-            try
-            {
-                Plotar_objeto_no_mapa(i.prefab, "Item", "Itens/" + i.prefab, i.latitude + ", " + i.longitude, x);
-            }
-            catch (System.Exception)
-            {
-                // Debug.Log("Prefab Itens/" + i.prefab + "Não encontrado");
+                try
+                {
+                    Plotar_objeto_no_mapa(i.id.ToString(), "Item", "Itens/" + i.prefab, i.latitude + ", " + i.longitude, x);
+                }
+                catch (System.Exception)
+                {
+                    // Debug.Log("Prefab Itens/" + i.prefab + "Não encontrado");
+                }
             }
         }
 
@@ -165,6 +175,22 @@ public class Mapa_API : MonoBehaviour
             Plotar_objeto_no_mapa("player_" + i.id, "Personagem", "Players/" + i.avatar, i.latitude + ", " + i.longitude, x);
         }
     }
+
+    void Gerencia_mochila(Mochila mochila)
+    {
+        foreach (Item_mochila item in mochila.mochila)
+        {
+            try
+            {                
+                Text temp = GameObject.Find(item.prefab).GetComponent<Text>();
+                temp.text = item.quantidade.ToString();
+            }
+            catch (System.Exception)
+            {
+                // Debug.Log();
+            }
+        }
+    }
     void Plotar_objeto_no_mapa(string name, string tag, string prefab, string coords, float tamanho) //Instancia um prefab na cena
     {
 
@@ -172,7 +198,7 @@ public class Mapa_API : MonoBehaviour
         try
         {
             tempGameObject = GameObject.Find(name);
-            tempGameObject.gameObject.tag = tag;
+            tempGameObject.tag = tag;
             try
             {
                 AICharacterControl myAICharacterControl = tempGameObject.gameObject.GetComponent<AICharacterControl>();
@@ -191,7 +217,7 @@ public class Mapa_API : MonoBehaviour
             tempGameObject = Instantiate(Resources.Load("Personagens/Prefabs/" + prefab, typeof(GameObject))) as GameObject;
             tempGameObject.transform.localPosition = _map.GeoToWorldPosition(localization, false);
             tempGameObject.name = name;
-            tempGameObject.gameObject.tag = tag;
+            tempGameObject.tag = tag;
             tempGameObject.gameObject.transform.localScale = new Vector3(tamanho, tamanho, tamanho);
         }
 

@@ -1,18 +1,28 @@
-﻿using System.Collections;
+﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
+using UnityEngine.Networking;
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            // Destroy(gameObject);
+            Coletar(gameObject);
+        }
     }
-
-    // Update is called once per frame
-    void Update()
+    public static void Coletar(GameObject gObj)
     {
-        
+        Debug.Log(gObj);
+        string token = PlayerPrefs.GetString("token", "");
+
+        WWWForm form = new WWWForm();
+        form.AddField("objeto_er_map", gObj.name);
+        form.AddField("quantidade", 1);
+
+        UnityWebRequest request = UnityWebRequest.Post(Base_API.basePath + "api/mochila/", form);
+        request.SetRequestHeader("Authorization", "Token " + token);
+        request.SendWebRequest();
     }
 }

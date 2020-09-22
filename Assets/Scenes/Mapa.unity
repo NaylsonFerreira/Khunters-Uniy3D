@@ -1439,7 +1439,7 @@ GameObject:
   - component: {fileID: 1503618975}
   - component: {fileID: 1503618974}
   m_Layer: 5
-  m_Name: Text
+  m_Name: MoedaDourada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2048,7 +2048,7 @@ PrefabInstance:
     - target: {fileID: 3858576263341244936, guid: 00c4057be698ae993b5408e812a1e660,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3858576263341244938, guid: 00c4057be698ae993b5408e812a1e660,
         type: 3}

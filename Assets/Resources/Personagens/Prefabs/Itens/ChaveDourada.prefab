@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8422846510034244179}
   - component: {fileID: 8422846510034244176}
+  - component: {fileID: 5338945389918617413}
   m_Layer: 0
   m_Name: ChaveDourada
   m_TagString: Item
@@ -66,10 +67,22 @@ BoxCollider:
   m_GameObject: {fileID: 8422846510034244178}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7569987, y: 2.0683756, z: 0.17393345}
-  m_Center: {x: -0.018743187, y: -0.5609062, z: 0.0010338873}
+  m_Size: {x: 0.8551414, y: 5.1192555, z: 0.3842393}
+  m_Center: {x: 0.002287373, y: 0.96453404, z: -0.0059763044}
+--- !u!114 &5338945389918617413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8422846510034244178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f723bb462214e4896195f67e9aead4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8422846509835080758
 PrefabInstance:
   m_ObjectHideFlags: 0

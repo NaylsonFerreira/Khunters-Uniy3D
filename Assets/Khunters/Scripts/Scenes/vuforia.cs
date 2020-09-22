@@ -15,24 +15,6 @@ public class vuforia : MonoBehaviour
         personagem = GameObject.FindGameObjectWithTag("Personagem");
         personagem.transform.SetParent(groundPlaneStage);
     }
-    IEnumerator Capturar()
-    {
-        string token = PlayerPrefs.GetString("token", "");
-        string id_capturar = PlayerPrefs.GetString("id_capturar", "");
-        UnityWebRequest request = UnityWebRequest.Delete(Base_API.basePath + "api/objeto_er_map/" + id_capturar + "/");
-        request.SetRequestHeader("Authorization", "Token " + token);
-        yield return request.SendWebRequest();
-        if (request.isNetworkError || request.isHttpError)
-        {
-            mensagem.text = "Não foi possivel apagar";
-            Debug.Log(request.error);
-        }
-        else
-        {
-            mensagem.text = "Capturado com sucesso";
-            PlayerPrefs.SetString("id_capturar", "");
-        }
-    }
     public void FoundPlane()
     {
         mensagem.text = "Toque na tela";
@@ -47,7 +29,7 @@ public class vuforia : MonoBehaviour
     }
     public void Open_app()
     {
-        StartCoroutine(Capturar());
+        Item.Coletar(personagem);
         try
         {
             string bundleId = "net.gcompris.full"; // your target bundle id

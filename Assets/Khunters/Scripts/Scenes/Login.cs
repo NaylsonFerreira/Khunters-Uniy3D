@@ -15,8 +15,8 @@ public class Login : MonoBehaviour
     public InputField password;
     public Text mensagem;
     void Start(){
-        email.text =  "";
-        password.text = "";
+        email.text =  "naylsonfsa@gmail.com";
+        password.text = "sextafeira";
     }
     public void Submit(){
         StartCoroutine(HandleSubmit());

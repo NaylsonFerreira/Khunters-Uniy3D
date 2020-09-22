@@ -30,7 +30,6 @@ public class Animal : MonoBehaviour
                 {                    
                     transform.position = new Vector3(0, 0, 0);
                     transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-                    PlayerPrefs.SetString("id_capturar", gameObject.name);
                     if (SceneManager.GetActiveScene().name != "Vuforia")
                     {
                         DontDestroyOnLoad(gameObject);
