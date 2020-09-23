@@ -22,6 +22,9 @@ public class User_API : MonoBehaviour
     public void To_Login(){
         SceneManager.LoadScene ("Login", LoadSceneMode.Single);
     }
+    public void To_Mochila(){
+        SceneManager.LoadScene ("Mochila", LoadSceneMode.Single);
+    }
     public static void To_Mapa(){
         SceneManager.LoadScene ("Mapa", LoadSceneMode.Single);
     }

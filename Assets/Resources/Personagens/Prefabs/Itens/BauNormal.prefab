@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 303297785169709839}
   - component: {fileID: 303297785169709838}
   - component: {fileID: 303297785169709873}
+  - component: {fileID: 5238397801271566739}
   m_Layer: 0
   m_Name: BauNormal
   m_TagString: Item
@@ -95,6 +96,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &5238397801271566739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 303297785169709872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50f723bb462214e4896195f67e9aead4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &303297787029471320
 PrefabInstance:
   m_ObjectHideFlags: 0
