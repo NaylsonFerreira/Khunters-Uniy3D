@@ -15,8 +15,8 @@ public class Login : MonoBehaviour
     public InputField password;
     public Text mensagem;
     void Start(){
-        email.text =  "naylsonfsa@gmail.com";
-        password.text = "sextafeira";
+        email.text =  "";
+        password.text = "";
     }
     public void Submit(){
         StartCoroutine(HandleSubmit());
@@ -27,7 +27,7 @@ public class Login : MonoBehaviour
     IEnumerator HandleSubmit(){
         mensagem.text = "Aguarde um momento...";
         WWWForm form = new WWWForm();
-        form.AddField("username", email.text);
+        form.AddField("email", email.text);
         form.AddField("password", password.text);
         UnityWebRequest request = UnityWebRequest.Post(Base_API.basePath + "login/json/",form);
         yield return request.SendWebRequest ();

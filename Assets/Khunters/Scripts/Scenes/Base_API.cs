@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 public class Base_API : MonoBehaviour
 {
     // public static string basePath = "https://khunters-staging.herokuapp.com/";
-    // public static string basePath = "https://khunters.herokuapp.com/";
-    public static string basePath = "http://192.168.100.5:8000/";
+    public static string basePath = "https://khunters.herokuapp.com/";
+    // public static string basePath = "http://192.168.100.5:8000/";
     void Start()
     {
         StartCoroutine(Check_token());
