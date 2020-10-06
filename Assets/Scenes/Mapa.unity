@@ -1127,7 +1127,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tchau
+  m_Text: Sair
 --- !u!222 &1267317888
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1861,7 +1861,7 @@ PrefabInstance:
     - target: {fileID: 3858576263341244936, guid: 00c4057be698ae993b5408e812a1e660,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858576263341244938, guid: 00c4057be698ae993b5408e812a1e660,
         type: 3}
