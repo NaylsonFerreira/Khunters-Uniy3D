@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7659610729490026920}
   - component: {fileID: 6728303626663680194}
   - component: {fileID: 1242091680334484243}
+  - component: {fileID: 4069133726503543364}
   m_Layer: 0
   m_Name: Galinha
   m_TagString: Personagem
@@ -62,6 +63,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &4069133726503543364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234998488996693982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bdf815eb198a677823fab44dd3e1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6204242092621662867
 PrefabInstance:
   m_ObjectHideFlags: 0

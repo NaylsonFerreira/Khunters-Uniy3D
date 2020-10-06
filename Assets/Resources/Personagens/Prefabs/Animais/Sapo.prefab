@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8969031560302272831}
   - component: {fileID: 6890467760440456523}
   - component: {fileID: 191386837438542946}
+  - component: {fileID: -5378136810748732145}
   m_Layer: 0
   m_Name: Sapo
   m_TagString: Personagem
@@ -62,6 +63,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-5378136810748732145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5131702511983443230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bdf815eb198a677823fab44dd3e1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3406564844716282597
 PrefabInstance:
   m_ObjectHideFlags: 0
