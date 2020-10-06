@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1291604877234848071}
   - component: {fileID: 9217328753328952704}
   - component: {fileID: 2066036965593536391}
+  - component: {fileID: -8472721308937635742}
   m_Layer: 0
   m_Name: Tigre
   m_TagString: Personagem
@@ -62,6 +63,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-8472721308937635742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965159831999816221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90bdf815eb198a677823fab44dd3e1bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2041388539425168122
 PrefabInstance:
   m_ObjectHideFlags: 0
